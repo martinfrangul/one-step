@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useState } from "react";
+import Counter from "./components/Counter";
+import CounterConfig from "./components/CounterConfig";
+import "./App.css";
 
 function App() {
+
+
+
+  const [userTimeAT, setUserTimeAT] = useState(25)
+
+
+  const setCustomAT = (AT) => {
+    setUserTimeAT(AT)
+  } 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Counter AT = {userTimeAT} ></Counter>
+
+      <CounterConfig onCustomAT = {setCustomAT} ></CounterConfig>
+    </Fragment>
   );
 }
 

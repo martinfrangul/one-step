@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 200px;
+    width: 500px;
+    height: 150px;
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px rgb(184, 179, 179);
+    background-color: aquamarine;
+    
+}
+
+.btnCont {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin: 5px 5px
+}
