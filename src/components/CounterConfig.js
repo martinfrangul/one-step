@@ -1,15 +1,21 @@
 import { useState } from "react";
 
-const CounterConfig = ({onCustomAT}) => {
+const CounterConfig = (props) => {
   const [actionTime, setActionTime] = useState(0);
+  const [relaxingTime, setRelaxingTime] = useState(0);
 
   const onActionHandler = (event) => {
     setActionTime(parseInt(event.target.value));
   };
 
+  const onRelaxHandler = (event) => {
+    setRelaxingTime(parseInt(event.target.value));
+  };
+
   const onSubmitHandler = (event) =>{
     event.preventDefault()
-    onCustomAT(actionTime)
+    props.onCustomAT(actionTime)
+    props.onCustomRX(relaxingTime)
 
   } 
   return (
@@ -30,6 +36,8 @@ const CounterConfig = ({onCustomAT}) => {
         <div className="form-group">
           <label htmlFor="rlx-time">Relaxing time</label>
           <input
+            onChange={onRelaxHandler}
+            value={relaxingTime}
             type="number"
             name="rlx-time"
             id="rlxT"

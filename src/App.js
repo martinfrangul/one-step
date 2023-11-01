@@ -8,17 +8,22 @@ function App() {
 
 
   const [userTimeAT, setUserTimeAT] = useState(25)
+  const [userTimeRX, setUserTimeRX] = useState(25)
 
 
   const setCustomAT = (AT) => {
     setUserTimeAT(AT)
   } 
+  
+  const setCustomRX = (RX) => {
+    setUserTimeRX(RX)
+  } 
 
   return (
     <Fragment>
-      <Counter AT = {userTimeAT} ></Counter>
+      <Counter AT = {userTimeAT} RX = {userTimeRX}></Counter>
 
-      <CounterConfig onCustomAT = {setCustomAT} ></CounterConfig>
+      <CounterConfig onCustomAT = {setCustomAT} onCustomRX = {setCustomRX}></CounterConfig>
     </Fragment>
   );
 }
