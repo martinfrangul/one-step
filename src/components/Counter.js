@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Counter.module.css";
+import AlertSound from "../components/AlertSound";
+
 
 function Counter(props) {
+
+
   let userAT = props.AT;
   let userRX = props.RX;
   const [seconds, setSeconds] = useState(0);
@@ -10,6 +14,10 @@ function Counter(props) {
   const [playPause, setPlayPause] = useState(false);
   const [mode, setMode] = useState(true);
   const [started, setStarted] = useState(false);
+  const [playSound, setPlaySound] = useState(false);
+  const [soundStatus, setSoundStatus] = useState(true)
+  const [messageAlert, setMessageAlert] = useState('')
+  const [toggleSound, setToggleSound] = useState(true);
 
   ////////////// HANDLERS //////////////
 
@@ -21,6 +29,8 @@ function Counter(props) {
     setMode(!mode);
     onResetHandler();
   };
+
+ 
 
   function onResetHandler() {
     setSeconds(0);
@@ -46,6 +56,7 @@ function Counter(props) {
 
     if (playPause) {
       setStarted(true);
+      setPlaySound(false);
       intervalId = setInterval(() => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
@@ -55,11 +66,15 @@ function Counter(props) {
               setMinutesAT(minutesAT - 1);
               setSeconds(59);
             } else {
+              
               // When both minutes and seconds reach 0, set the Alert to TRUE.
-              alert("Time to rest");
+              if (toggleSound) {
+                setPlaySound(true);
+              }
               setMinutesRX(userRX);
               setMode(false);
               setPlayPause(false);
+              setMessageAlert('Time to rest!')
             }
           }
 
@@ -68,11 +83,16 @@ function Counter(props) {
               setMinutesRX(minutesRX - 1);
               setSeconds(59);
             } else {
+              
               // When both minutes and seconds reach 0, set the Alert to TRUE.
-              alert("Time to rest");
+              if (toggleSound) {
+                setPlaySound(true);
+              }
               setMinutesAT(userAT);
               setMode(true);
               setPlayPause(false);
+              setMessageAlert("Let's go back to work!")
+
             }
           }
         }
@@ -84,7 +104,17 @@ function Counter(props) {
     return () => {
       clearInterval(intervalId);
     };
-  }, [seconds, playPause, minutesRX, minutesAT, userAT, started, userRX, mode]);
+  }, [
+    seconds,
+    playPause,
+    minutesRX,
+    minutesAT,
+    userAT,
+    started,
+    userRX,
+    mode,
+    toggleSound,
+  ]);
 
   return (
     <div className={classes.container}>
@@ -99,23 +129,16 @@ function Counter(props) {
         </h2>
       )}
       <div className={classes.btnCont}>
-        {/* <button className={classes.btn} onClick={onStartHandler}>
-          {playPause ? "PAUSE" : "PLAY"}
-        </button>
-        <button className={classes.btn} onClick={onResetHandler}>
-          RESET
-        </button>
-        <button className={classes.btn} onClick={onChangeModeHandler}>
-          {mode ? "CHILL" : "WORK"}
-        </button> */}
-
         <button className={classes["button-52"]} onClick={onStartHandler}>
           {playPause ? "PAUSE" : "PLAY"}
         </button>
-        <button className={classes["button-52"]} onClick={onResetHandler}>RESET</button>
-        <button className={classes["button-52"]} onClick={onChangeModeHandler} >{mode ? "CHILL" : "WORK"}</button>
-
-
+        <button className={classes["button-52"]} onClick={onResetHandler}>
+          RESET
+        </button>
+        <button className={classes["button-52"]} onClick={onChangeModeHandler}>
+          {mode ? "CHILL" : "WORK"}
+        </button>
+        {playSound && <AlertSound messageAlert={messageAlert} soundOn={soundStatus} ></AlertSound>}
       </div>
     </div>
   );

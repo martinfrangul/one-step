@@ -5,12 +5,19 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 
 function App() {
+
   const [userTimeAT, setUserTimeAT] = useState(25);
   const [userTimeRX, setUserTimeRX] = useState(5);
+
 
   const setCustomAT = (AT) => {
     setUserTimeAT(AT);
   };
+
+  const hasClicked = () => {
+    console.log('Acá estoy');
+  }
+  
 
   const setCustomRX = (RX) => {
     setUserTimeRX(RX);
@@ -32,7 +39,8 @@ function App() {
 
   return (
     <Fragment>
-      <Navbar></Navbar>
+          
+      <Navbar soundToggleClicked={hasClicked}></Navbar>
       <div className="container-gral">
         <div className="elements">
           <Counter AT={userTimeAT} RX={userTimeRX}></Counter>
@@ -46,8 +54,10 @@ function App() {
           ></CounterConfig>
         </div>
       </div>
-      <div>
-        <button onClick={openModal}>Abrir Modal</button>
+      <div className="btn-container">
+        <button className={"button-55"} onClick={openModal}>
+          Configure timer
+        </button>
       </div>
     </Fragment>
   );

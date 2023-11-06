@@ -1,7 +1,9 @@
 import { useState } from "react";
 import classes from "./CounterConfig.module.css";
 
+
 const CounterConfig = (props) => {
+
   const [actionTime, setActionTime] = useState(0);
   const [relaxingTime, setRelaxingTime] = useState(0);
 
@@ -16,7 +18,7 @@ const CounterConfig = (props) => {
       if (e.target.classList.contains(classes["modal-overlay"])) {
         props.onClose();
       }
-    }
+    };
 
     const onRelaxHandler = (event) => {
       setRelaxingTime(parseInt(event.target.value));
@@ -26,7 +28,7 @@ const CounterConfig = (props) => {
       event.preventDefault();
       props.onCustomAT(actionTime);
       props.onCustomRX(relaxingTime);
-      props.onClose()
+      props.onClose();
     };
 
     return (
