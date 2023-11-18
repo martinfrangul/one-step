@@ -3,8 +3,8 @@ import logo from "../assets/logoOneStep.png";
 
 const Navbar = (props) => {
 
-  const onSoundToggleHandler = (soundToggle) => {
-    props.soundToggleClicked(soundToggle)
+  const onSoundToggleHandler = () => {
+    props.soundToggleClicked()
   }
 
   return (
@@ -22,7 +22,7 @@ const Navbar = (props) => {
       <div className={classes["btn-toggle-sound"]}>
         {/* <button>SOUND ON/OFF </button> */}
         <button onClick={onSoundToggleHandler} className={classes["button-48"]}>
-          
+          Toggle sound
         </button>
 
       </div>

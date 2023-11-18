@@ -8,6 +8,7 @@ function App() {
 
   const [userTimeAT, setUserTimeAT] = useState(25);
   const [userTimeRX, setUserTimeRX] = useState(5);
+  const [soundState, setSoundState] = useState(true)
 
 
   const setCustomAT = (AT) => {
@@ -15,7 +16,7 @@ function App() {
   };
 
   const hasClicked = () => {
-    console.log('Acá estoy');
+    setSoundState(!soundState)
   }
   
 
@@ -43,7 +44,7 @@ function App() {
       <Navbar soundToggleClicked={hasClicked}></Navbar>
       <div className="container-gral">
         <div className="elements">
-          <Counter AT={userTimeAT} RX={userTimeRX}></Counter>
+          <Counter AT={userTimeAT} RX={userTimeRX} soundState={soundState}></Counter>
         </div>
         <div className="elements">
           <CounterConfig

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Counter.module.css";
-import AlertSound from "../components/AlertSound";
+import Alert from "../components/Alert";
 
 
 function Counter(props) {
@@ -15,9 +15,7 @@ function Counter(props) {
   const [mode, setMode] = useState(true);
   const [started, setStarted] = useState(false);
   const [playSound, setPlaySound] = useState(false);
-  const [soundStatus, setSoundStatus] = useState(true)
   const [messageAlert, setMessageAlert] = useState('')
-  const [toggleSound, setToggleSound] = useState(true);
 
   ////////////// HANDLERS //////////////
 
@@ -30,7 +28,7 @@ function Counter(props) {
     onResetHandler();
   };
 
- 
+ console.log(props.soundState);
 
   function onResetHandler() {
     setSeconds(0);
@@ -68,7 +66,7 @@ function Counter(props) {
             } else {
               
               // When both minutes and seconds reach 0, set the Alert to TRUE.
-              if (toggleSound) {
+              if (props.soundState) {
                 setPlaySound(true);
               }
               setMinutesRX(userRX);
@@ -85,7 +83,7 @@ function Counter(props) {
             } else {
               
               // When both minutes and seconds reach 0, set the Alert to TRUE.
-              if (toggleSound) {
+              if (props.soundState) {
                 setPlaySound(true);
               }
               setMinutesAT(userAT);
@@ -113,7 +111,6 @@ function Counter(props) {
     started,
     userRX,
     mode,
-    toggleSound,
   ]);
 
   return (
@@ -138,7 +135,7 @@ function Counter(props) {
         <button className={classes["button-52"]} onClick={onChangeModeHandler}>
           {mode ? "CHILL" : "WORK"}
         </button>
-        {playSound && <AlertSound messageAlert={messageAlert} soundOn={soundStatus} ></AlertSound>}
+        {playSound && <Alert messageAlert={messageAlert} ></Alert>}
       </div>
     </div>
   );
