@@ -26,7 +26,7 @@ const Navbar = (props) => {
           <div className={classes["flip-card-front"]}>
             <img className={classes.logo} src={logo} alt="Logo" />
           </div>
-          <div class={classes["flip-card-back"]}>
+          <div className={classes["flip-card-back"]}>
             <h1>STAY FOCUSED!</h1>
           </div>
         </div>

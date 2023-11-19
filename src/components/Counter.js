@@ -6,11 +6,13 @@ import Alert from "../components/Alert";
 function Counter(props) {
 
 
+  /////////////// STATE ///////////////
+
   const userAT = props.AT;
   const userRX = props.RX;
   const [seconds, setSeconds] = useState(0);
-  const [minutesAT, setMinutesAT] = useState(0);
-  const [minutesRX, setMinutesRX] = useState(0);
+  const [minutesAT, setMinutesAT] = useState(25);
+  const [minutesRX, setMinutesRX] = useState(5);
   const [playPause, setPlayPause] = useState(false);
   const [mode, setMode] = useState(true);
   const [started, setStarted] = useState(false);
@@ -28,15 +30,12 @@ function Counter(props) {
     onResetHandler();
   };
 
- console.log(props.soundState);
-
   function onResetHandler() {
     setSeconds(0);
-    setMinutesAT(25);
-    setMinutesRX(5);
     setPlayPause(false);
     setStarted(false);
   }
+
 
   //////////// COUNTER /////////////////
 
