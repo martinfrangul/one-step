@@ -41,7 +41,7 @@ function App() {
   return (
     <Fragment>
           
-      <Navbar soundToggleClicked={hasClicked}></Navbar>
+      <Navbar soundToggleClicked={hasClicked} btnSound={soundState}></Navbar>
       <div className="container-gral">
         <div className="elements">
           <Counter AT={userTimeAT} RX={userTimeRX} soundState={soundState}></Counter>

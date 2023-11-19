@@ -6,8 +6,8 @@ import Alert from "../components/Alert";
 function Counter(props) {
 
 
-  let userAT = props.AT;
-  let userRX = props.RX;
+  const userAT = props.AT;
+  const userRX = props.RX;
   const [seconds, setSeconds] = useState(0);
   const [minutesAT, setMinutesAT] = useState(0);
   const [minutesRX, setMinutesRX] = useState(0);
@@ -110,7 +110,7 @@ function Counter(props) {
     userAT,
     started,
     userRX,
-    mode,
+    mode
   ]);
 
   return (
