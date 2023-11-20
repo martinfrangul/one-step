@@ -21,6 +21,12 @@ function Counter(props) {
 
   ////////////// HANDLERS //////////////
 
+
+  const onOpenModalHandler = () => {
+    props.openModal()
+  }
+
+
   function onStartHandler() {
     setPlayPause(!playPause);
   }
@@ -101,6 +107,8 @@ function Counter(props) {
     return () => {
       clearInterval(intervalId);
     };
+
+    // eslint-disable-next-line
   }, [
     seconds,
     playPause,
@@ -136,6 +144,11 @@ function Counter(props) {
         </button>
         {playSound && <Alert messageAlert={messageAlert} ></Alert>}
       </div>
+      <div className="btn-container">
+          <button className={"button-55"} onClick={onOpenModalHandler}>
+            Configure timer
+          </button>
+        </div>
     </div>
   );
 }
