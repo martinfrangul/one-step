@@ -1,10 +1,10 @@
 import { Fragment, useState } from "react";
-import Counter from "./components/Counter";
-import CounterConfig from "./components/CounterConfig";
+import Counter from "./components/Counter/Counter";
+import CounterConfig from "./components/Counter/CounterConfig";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import TasksForm from "./components/TasksForm";
-import TasksPanel from "./components/TasksPanel";
+import TasksForm from "./components/Tasks/TasksForm";
+import TasksPanel from "./components/Tasks/TasksPanel";
 
 function App() {
   const [userTimeAT, setUserTimeAT] = useState(25);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Counter.module.css";
-import Alert from "../components/Alert";
+import Alert from "../Alert";
 
 
 function Counter(props) {
@@ -18,6 +18,8 @@ function Counter(props) {
   const [started, setStarted] = useState(false);
   const [playSound, setPlaySound] = useState(false);
   const [messageAlert, setMessageAlert] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
+
 
   ////////////// HANDLERS //////////////
 
@@ -29,6 +31,7 @@ function Counter(props) {
 
   function onStartHandler() {
     setPlayPause(!playPause);
+    
   }
 
   const onChangeModeHandler = () => {
@@ -46,6 +49,9 @@ function Counter(props) {
   //////////// COUNTER /////////////////
 
   useEffect(() => {
+
+    
+
     if (mode) {
       if (!started) {
         setMinutesAT(userAT);
@@ -58,6 +64,7 @@ function Counter(props) {
     let intervalId;
 
     if (playPause) {
+      
       setStarted(true);
       setPlaySound(false);
       intervalId = setInterval(() => {
@@ -74,6 +81,7 @@ function Counter(props) {
               if (props.soundState) {
                 setPlaySound(true);
               }
+              setShowAlert(true)
               setMinutesRX(userRX);
               setMode(false);
               setPlayPause(false);
@@ -91,23 +99,25 @@ function Counter(props) {
               if (props.soundState) {
                 setPlaySound(true);
               }
+              setShowAlert(true)
               setMinutesAT(userAT);
               setMode(true);
               setPlayPause(false);
               setMessageAlert("Let's go back to work!")
-
             }
           }
         }
       }, 1000);
     } else {
       clearInterval(intervalId);
-    }
 
+    }
+    
     return () => {
       clearInterval(intervalId);
-    };
 
+    };
+    
     // eslint-disable-next-line
   }, [
     seconds,
@@ -117,8 +127,10 @@ function Counter(props) {
     userAT,
     started,
     userRX,
-    mode
+    mode,
   ]);
+
+  console.log('segundo SA' + showAlert);
 
   return (
     <div className={classes.container}>
@@ -142,7 +154,7 @@ function Counter(props) {
         <button className={classes["button-52"]} onClick={onChangeModeHandler}>
           {mode ? "CHILL" : "WORK"}
         </button>
-        {playSound && <Alert messageAlert={messageAlert} ></Alert>}
+        {showAlert && <Alert messageAlert={messageAlert} playSound={playSound}></Alert>}
       </div>
       <div className="btn-container">
           <button className={"button-55"} onClick={onOpenModalHandler}>
