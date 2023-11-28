@@ -4,8 +4,8 @@ import classes from "./CounterConfig.module.css";
 
 const CounterConfig = (props) => {
 
-  const [actionTime, setActionTime] = useState(0);
-  const [relaxingTime, setRelaxingTime] = useState(0);
+  const [actionTime, setActionTime] = useState(25);
+  const [relaxingTime, setRelaxingTime] = useState(5);
 
   if (!props.isOpen) {
     return null;
@@ -29,6 +29,7 @@ const CounterConfig = (props) => {
       props.onCustomAT(actionTime);
       props.onCustomRX(relaxingTime);
       props.onClose();
+      props.onReset()
     };
 
     return (

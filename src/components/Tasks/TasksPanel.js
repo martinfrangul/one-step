@@ -7,8 +7,6 @@ const TasksPanel = (props) => {
     props.deleteTask(idForDelete);
   };
 
-  console.log(props.tasksDataPanel);
-
   let tasksMap = props.tasksDataPanel.map((el) => (
     <li key={el.id}>
       {el.name}{" "}

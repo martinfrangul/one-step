@@ -1,17 +1,13 @@
 import { Fragment, useState } from "react";
 import Counter from "./components/Counter/Counter";
-import CounterConfig from "./components/Counter/CounterConfig";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TasksForm from "./components/Tasks/TasksForm";
 import TasksPanel from "./components/Tasks/TasksPanel";
 
 function App() {
-  const [userTimeAT, setUserTimeAT] = useState(25);
-  const [userTimeRX, setUserTimeRX] = useState(5);
   const [soundState, setSoundState] = useState(true);
   const [tasksData, setTasksData] = useState([]);
-
 
   ///////////// ADD TASK ///////////// 
 
@@ -21,6 +17,7 @@ function App() {
     }
   };
 
+
   ///////////// DELETE TASK ///////////// 
 
   const deleteTask = (idForDelete) => {
@@ -28,29 +25,13 @@ function App() {
     setTasksData(newTaskData);
   };
 
-  const setCustomAT = (AT) => {
-    setUserTimeAT(AT);
-  };
-
-  const setCustomRX = (RX) => {
-    setUserTimeRX(RX);
-  };
+  
 
   const hasClicked = () => {
     setSoundState(!soundState);
   };
   
-  //////////// MODAL //////////
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  
 
   //////////////////////////
 
@@ -60,19 +41,8 @@ function App() {
       <div className="container-gral">
         <div className="elements">
           <Counter
-            AT={userTimeAT}
-            RX={userTimeRX}
             soundState={soundState}
-            openModal={openModal}
           ></Counter>
-        </div>
-        <div className="elements">
-          <CounterConfig
-            onCustomAT={setCustomAT}
-            onCustomRX={setCustomRX}
-            isOpen={isModalOpen}
-            onClose={closeModal}
-          ></CounterConfig>
         </div>
       </div>
       <div>
