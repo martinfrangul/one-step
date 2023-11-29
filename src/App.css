@@ -40,8 +40,8 @@
 .container-gral {
   display: flex;
   flex-direction: row;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-container {
@@ -90,3 +90,29 @@
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
 
+.tasks {
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tasks-form {
+  width: 400px;
+}
+
+.tasks-panel {
+  width: 400px;
+  margin-top: 50px;
+}
+
+
+.rightElements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modeBanner {
+  font-size: 2rem;
+}

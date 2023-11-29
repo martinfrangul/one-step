@@ -1,27 +1,32 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-top: 50px;
-    width: 700px;
-    height: 300px;
-    border-radius: 20px;
-    box-shadow: 10px 5px 5px rgb(184, 179, 179);
-    background-color: rgb(198, 226, 233);
-    z-index: 1;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 50px;
+  width: 700px;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px rgb(184, 179, 179);
+  z-index: 1;
+}
+
+.background-AT {
+  background-color: rgb(198, 226, 233);
+}
+
+.background-RX {
+  background-color: rgb(200, 246, 201);
 }
 
 .btnCont {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-
 h2 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .button-52 {
@@ -37,13 +42,12 @@ h2 {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin: 5px
-
+  margin: 5px;
 }
 
 .button-52:after {
   content: "";
-  background-color: #ffe54c;
+  background-color: #fdfdac;
   width: 100%;
   z-index: -1;
   position: absolute;
@@ -63,4 +67,3 @@ h2 {
     padding: 13px 50px 13px;
   }
 }
-

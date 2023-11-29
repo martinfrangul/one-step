@@ -17,7 +17,7 @@ function Counter(props) {
   const [messageAlert, setMessageAlert] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   ////////////// HANDLERS //////////////
 
   const setCustomAT = (AT) => {
@@ -28,14 +28,19 @@ function Counter(props) {
     setUserRX(RX);
   };
 
-
   function onStartHandler() {
     setPlayPause(!playPause);
   }
 
+  const backgroundColor = mode
+    ? classes["background-AT"]
+    : classes["background-RX"];
+
   const onChangeModeHandler = () => {
     setMode(!mode);
+    props.changeMode(mode)
     onResetHandler();
+
   };
 
   function onResetHandler() {
@@ -44,9 +49,7 @@ function Counter(props) {
     setStarted(false);
   }
 
-
   //////////// MODAL //////////
-
 
   const onOpenModalHandler = () => {
     setIsModalOpen(true);
@@ -59,7 +62,7 @@ function Counter(props) {
   //////////// COUNTER /////////////////
 
   useEffect(() => {
-    setShowAlert(false)
+    setShowAlert(false);
     if (mode) {
       if (!started) {
         setMinutes(userAT);
@@ -115,9 +118,8 @@ function Counter(props) {
     // eslint-disable-next-line
   }, [seconds, playPause, minutes, userAT, started, userRX, mode]);
 
-
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} ${backgroundColor}`}>
       <h2>
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </h2>
@@ -129,7 +131,6 @@ function Counter(props) {
           RESET
         </button>
         <button className={classes["button-52"]} onClick={onChangeModeHandler}>
-          {/* {mode ? "CHILL" : "WORK"} */}
           MODE
         </button>
         {showAlert && (
@@ -137,11 +138,11 @@ function Counter(props) {
         )}
       </div>
       <CounterConfig
-            onCustomAT={setCustomAT}
-            onCustomRX={setCustomRX}
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            onReset={onResetHandler}
+        onCustomAT={setCustomAT}
+        onCustomRX={setCustomRX}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onReset={onResetHandler}
       ></CounterConfig>
       <div className="btn-container">
         <button className={"button-55"} onClick={onOpenModalHandler}>

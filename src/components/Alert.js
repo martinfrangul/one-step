@@ -18,12 +18,6 @@ const Alert = (props) => {
       ) : (
         handleSoundEnded()
       )}
-      {/* {props.playSound && (
-        <audio src={alertSound} autoPlay onPlay={handleSoundEnded} />
-      )}
-      {!props.playSound && (
-       handleSoundEnded()
-      )} */}
     </div>
   );
 };
