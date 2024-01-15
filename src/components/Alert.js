@@ -2,7 +2,7 @@ import alertSound from "../assets/alert.mp3";
 import Swal from "sweetalert2";
 
 const Alert = (props) => {
-  const handleSoundEnded = () => {
+  const showAlertBanner = () => {
     Swal.fire({
       title: "Time's up!",
       text: props.messageAlert,
@@ -11,12 +11,14 @@ const Alert = (props) => {
     });
   };
 
+
+
   return (
     <div>
       {props.playSound ? (
-        <audio src={alertSound} autoPlay onPlay={handleSoundEnded} />
+        <audio src={alertSound} autoPlay onPlay={showAlertBanner} />
       ) : (
-        handleSoundEnded()
+        showAlertBanner()
       )}
     </div>
   );

@@ -20,6 +20,8 @@ function Counter(props) {
 
   ////////////// HANDLERS //////////////
 
+
+
   const setCustomAT = (AT) => {
     setUserAT(AT);
   };
@@ -30,6 +32,7 @@ function Counter(props) {
 
   function onStartHandler() {
     setPlayPause(!playPause);
+
   }
 
   const backgroundColor = mode
@@ -37,8 +40,8 @@ function Counter(props) {
     : classes["background-RX"];
 
   const onChangeModeHandler = () => {
+    props.changeMode(!mode)
     setMode(!mode);
-    props.changeMode(mode)
     onResetHandler();
 
   };
@@ -47,6 +50,7 @@ function Counter(props) {
     setSeconds(0);
     setPlayPause(false);
     setStarted(false);
+
   }
 
   //////////// MODAL //////////
@@ -59,10 +63,12 @@ function Counter(props) {
     setIsModalOpen(false);
   };
 
+
+  
   //////////// COUNTER /////////////////
 
   useEffect(() => {
-    setShowAlert(false);
+    
     if (mode) {
       if (!started) {
         setMinutes(userAT);
@@ -73,7 +79,7 @@ function Counter(props) {
       }
     }
     let intervalId;
-
+    
     if (playPause) {
       setStarted(true);
       setPlaySound(false);
@@ -92,8 +98,12 @@ function Counter(props) {
             setShowAlert(true);
             setMinutes(userRX);
             setMode(false);
+            props.changeMode(!mode)
             setPlayPause(false);
             setMessageAlert("Time to rest!");
+            console.log(showAlert);
+
+
           } else {
             // When both minutes and seconds reach 0, set the Alert to TRUE.
             if (props.soundState) {
@@ -102,21 +112,35 @@ function Counter(props) {
             setShowAlert(true);
             setMinutes(userAT);
             setMode(true);
+            props.changeMode(!mode)
             setPlayPause(false);
             setMessageAlert("Let's go back to work!");
+
           }
         }
       }, 1000);
+      setShowAlert(false);
+
     } else {
       clearInterval(intervalId);
     }
-
+    
     return () => {
       clearInterval(intervalId);
     };
 
     // eslint-disable-next-line
   }, [seconds, playPause, minutes, userAT, started, userRX, mode]);
+
+  // useEffect(() => {
+  //   if (showAlert) {
+  //     const timeoutId = setTimeout(() => {
+  //       setShowAlert(false);
+  //     }, 1000);
+  
+  //     return () => clearTimeout(timeoutId);
+  //   }
+  // }, [showAlert]);
 
   return (
     <div className={`${classes.container} ${backgroundColor}`}>
@@ -135,7 +159,7 @@ function Counter(props) {
         </button>
         {showAlert && (
           <Alert messageAlert={messageAlert} playSound={playSound}></Alert>
-        )}
+          )}
       </div>
       <CounterConfig
         onCustomAT={setCustomAT}

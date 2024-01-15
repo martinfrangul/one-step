@@ -8,7 +8,7 @@ import TasksPanel from "./components/Tasks/TasksPanel";
 function App() {
   const [soundState, setSoundState] = useState(true);
   const [tasksData, setTasksData] = useState([]);
-  const [modeBanner, setModeBanner] = useState("");
+  const [modeBanner, setModeBanner] = useState(true);
 
   ///////////// ADD TASK /////////////
 
