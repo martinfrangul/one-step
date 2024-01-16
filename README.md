@@ -10,6 +10,12 @@ This project is a Pomodoro timer application with task management functionality,
 - Intuitive and user-friendly design.
 
 
+## DEMO
+
+You can try the online demo of the application here:
+https://martinfrangul.github.io/one-step/
+
+
 ## Contributions
 
 Contributions are welcome. If you find a bug or have an enhancement, please create an issue or send a pull request.
