@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/one-step/static/css/main.dfa1377c.css",
+    "main.js": "/one-step/static/js/main.898d22e7.js",
+    "static/js/787.6bf0a4eb.chunk.js": "/one-step/static/js/787.6bf0a4eb.chunk.js",
+    "static/media/logoOneStep.png": "/one-step/static/media/logoOneStep.51fda79b156d99899cec.png",
+    "static/media/alert.mp3": "/one-step/static/media/alert.5101ad94d149c994f05d.mp3",
+    "index.html": "/one-step/index.html",
+    "main.dfa1377c.css.map": "/one-step/static/css/main.dfa1377c.css.map",
+    "main.898d22e7.js.map": "/one-step/static/js/main.898d22e7.js.map",
+    "787.6bf0a4eb.chunk.js.map": "/one-step/static/js/787.6bf0a4eb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dfa1377c.css",
+    "static/js/main.898d22e7.js"
+  ]
+}
