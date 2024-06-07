@@ -1,6 +1,6 @@
 # ONE STEP (at a time)
 
-This project is a Pomodoro timer application with task management functionality, built with React. It helps improve productivity by allowing users to break their time into work and break intervals.
+This project is a Pomodoro timer application with task management functionality, built with React. It helps improve productivity by allowing users to break their time into work and break intervals. WORK IN PROGRESS
 
 ## Features
 
